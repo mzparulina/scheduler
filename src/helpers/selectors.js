@@ -14,7 +14,11 @@ function getSelectorForDay(state, name, selectorName) {
 }
 
 export function getAppointmentsForDay(state, name) {
-  return getSelectorForDay(state,name, 'appointments')
+  return getSelectorForDay(state, name, 'appointments')
+}
+
+export function getInterviewersForDay(state, name) {
+  return getSelectorForDay(state, name, 'interviewers')
 }
 
 export function getInterview(state, interview) {
@@ -23,8 +27,4 @@ export function getInterview(state, interview) {
   filteredInterview.student = interview.student;
   filteredInterview.interviewer = state.interviewers[interview.interviewer];
   return filteredInterview;
-}
-
-export function getInterviewersForDay(state, name) {
-  return getSelectorForDay(state,name, 'interviewers')
 }
