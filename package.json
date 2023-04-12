@@ -17,7 +17,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public --ci",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "coverage": "CI=true && react-scripts test --coverage --watchAll=false"
   },
   "browserslist": {
     "production": [
@@ -47,6 +48,7 @@
     "sass": "^1.53.0"
   },
   "jest": {
+    "resetMocks": false,
     "watchPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/.git/"
