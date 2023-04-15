@@ -38,20 +38,21 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true));
   }
 
-  function remove(){
-    transition(DELETING,true);
-
-    props.cancelInterview(props.id)
-      .then(() => transition(EMPTY))
-      .catch(error => transition(ERROR_DELETE, true));
+  function remove() {
+    if (mode === CONFIRM) {
+      transition(DELETING, true)
+      props.cancelInterview(props.id)
+        .then(() => transition(EMPTY))
+        .catch(() => transition(ERROR_DELETE, true))
+    } else {
+      transition(CONFIRM);      
+    }
   }
 
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
-      { mode === EMPTY && 
-        <Empty onAdd={() => transition(CREATE)} />
-      }
+      { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
       { mode === SHOW &&
         <Show
           student={props.interview.student}
@@ -67,19 +68,12 @@ export default function Appointment(props) {
           onSave={save}
         />
       }
-      { mode === SAVING &&
-        <Status message="Saving"/>
-      }
-      { mode === CONFIRM &&
-        <Confirm
+      { mode === SAVING && <Status message="Saving"/> }
+      { mode === DELETING && <Status message="Deleting" /> }
+      { mode === CONFIRM && <Confirm
           onConfirm={remove}
           onCancel={back}
           message="Are you sure you would like to delete?"
-        />
-      }
-      { mode === DELETING &&
-        <Status
-          message="Deleting"
         />
       }
       { mode === EDIT &&
