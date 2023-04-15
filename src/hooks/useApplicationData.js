@@ -33,29 +33,10 @@ export default function useApplicationData() {
       [id]: appointment
     }
 
-    const getDay = findDay(state.day)
-
-    let day = {
-      ...state.days[getDay],
-      spots: state.days[getDay]
-    }
-
-    if (!state.appointments[id].interview) {
-      day = {
-        ...state.days[getDay],
-        spots: state.days[getDay].spots - 1
-      } 
-    } else {
-      day = {
-        ...state.days[getDay],
-        spots: state.days[getDay].spots
-      } 
-    }
-
-    state.days[getDay] = day;
+    const days = findDay(appointments); 
 
     return axios.put(`${url}${id}`, appointment).then(() => {
-      setState({...state, appointments});
+      setState({...state, appointments, days});
     })
   }
 
@@ -70,29 +51,26 @@ export default function useApplicationData() {
       [id]: appointment
     }
 
-    const getDay = findDay(state.day)
-
-    const day = {
-      ...state.days[getDay],
-      spots: state.days[getDay].spots + 1
-    }
-
-    state.days[getDay] = day;
+    const days = findDay(appointments)
 
     return axios.delete(`${url}${id}`, appointment).then(()=>{
-      setState({...state, appointments});
+      setState({...state, appointments, days});
     });
   }
 
-  function findDay(day) {
-    const days = {
-      Monday: 0,
-      Tuesday: 1,
-      Wednesday: 2,
-      Thursday: 3,
-      Friday: 4
-    }
-    return days[day]
+  function findDay(appointments) {
+    const dayOfWeek = state.days.find((day) => day.name === state.day);
+    let counter = 0;
+    dayOfWeek.appointments.forEach((id) => {
+      if (appointments[id].interview === null) {
+        counter++;
+      }
+    });
+    const newDay = { ...dayOfWeek, spots: counter };
+    const newDayArray = [...state.days];
+    newDayArray[dayOfWeek.id - 1] = newDay;
+
+    return newDayArray;
   }
 
   return {
