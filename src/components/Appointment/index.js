@@ -33,8 +33,8 @@ export default function Appointment(props) {
     };
 
     transition(SAVING);
-    props.bookInterview(props.id,interview)
-      .then(()=>transition(SHOW))
+    props.bookInterview(props.id, interview)
+      .then(()=> transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
   }
 
@@ -49,6 +49,10 @@ export default function Appointment(props) {
     }
   }
 
+  function edit() {
+    transition(EDIT);
+  }
+
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
@@ -57,20 +61,21 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          onDelete={()=>transition(CONFIRM)}
-          onEdit={()=>transition(EDIT)}
+          onDelete={remove}
+          onEdit={edit}
         />
       }
       { mode === CREATE &&
         <Form
           interviewers={props.interviewers}
-          onCancel={() => back(EMPTY)}
           onSave={save}
-        />
+          onCancel={back}
+       />
       }
       { mode === SAVING && <Status message="Saving"/> }
       { mode === DELETING && <Status message="Deleting" /> }
-      { mode === CONFIRM && <Confirm
+      { mode === CONFIRM &&
+        <Confirm
           onConfirm={remove}
           onCancel={back}
           message="Are you sure you would like to delete?"
