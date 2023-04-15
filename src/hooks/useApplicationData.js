@@ -25,19 +25,19 @@ export default function useApplicationData() {
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
-      interview: {...interview}
-    }
+      interview: { ...interview }
+    };
 
     const appointments = {
       ...state.appointments,
       [id]: appointment
-    }
-
+    };
     const days = findDay(appointments); 
 
-    return axios.put(`${url}${id}`, appointment).then(() => {
-      setState({...state, appointments, days});
-    })
+
+    return axios.put(`${url}${id}`, interview).then(()=>{
+      setState({ ...state, appointments, days })
+    });
   }
 
   function cancelInterview(id){
