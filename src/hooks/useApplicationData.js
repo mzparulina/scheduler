@@ -34,8 +34,7 @@ export default function useApplicationData() {
     };
     const days = findDay(appointments); 
 
-
-    return axios.put(`${url}${id}`, interview).then(()=>{
+    return axios.put(`${url}${id}`, {interview}).then(()=>{
       setState({ ...state, appointments, days })
     });
   }
@@ -53,7 +52,7 @@ export default function useApplicationData() {
 
     const days = findDay(appointments)
 
-    return axios.delete(`${url}${id}`, appointment).then(()=>{
+    return axios.delete(`${url}${id}`, {appointment}).then(()=>{
       setState({...state, appointments, days});
     });
   }
