@@ -18,7 +18,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public --ci",
     "build-storybook": "build-storybook -s public",
-    "coverage": "CI=true && react-scripts test --coverage --watchAll=false"
+    "coverage": "CI=true && react-scripts test --coverage --watchAll=false",
+    "cypress": "cypress open -P ."
   },
   "browserslist": {
     "production": [
@@ -52,6 +53,10 @@
     "watchPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/.git/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
     ]
   }
 }
