@@ -21,3 +21,13 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## App Screenshots
+
+Home
+!["Scheduler Home"](https://github.com/mzparulina/scheduler/blob/master/docs/appointment-home.png)
+Appointment Form
+!["Scheduler Form"](https://github.com/mzparulina/scheduler/blob/master/docs/appointment-form.png)
+
+Appointment Edit & Delete
+!["Scheduler Buttons"](https://github.com/mzparulina/scheduler/blob/master/docs/appointment-buttons.png)
