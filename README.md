@@ -2,18 +2,20 @@
 
 ## Setup
 
-Install dependencies with `npm install`.
+- Install dependencies with `npm install`.
+- Database [scheduler-api](https://github.com/mzparulina/scheduler-api)
 
 ## Running Webpack Development Server
 
 ```sh
-npm start
+npm run start
 ```
 
 ## Running Jest Test Framework
 
 ```sh
 npm test
+npm run coverage
 ```
 
 ## Running Storybook Visual Testbed
@@ -21,6 +23,11 @@ npm test
 ```sh
 npm run storybook
 ```
+## Running Cypress
+```sh
+npm run cypress
+```
+
 
 ## App Screenshots
 
