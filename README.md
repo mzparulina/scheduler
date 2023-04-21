@@ -1,8 +1,8 @@
 # Interview Scheduler
 
-. Clone this repository.
+1. Clone this repository.
 2. Install the scheduler dependencies with `npm install`.
-3. Clone the [scheduler-api repository](https://github.com/paigenelmes/scheduler-api).
+3. Clone the [scheduler-api repository](https://github.com/mzparulina/scheduler-api).
 4. Install the scheduler-api dependencies with `npm install`.
 5. Login to the the PostgreSQL server with the username **development** and the password **development**. Use the command `psql -U development`.
 6. Create the database with the command `CREATE DATABASE scheduler_development;`.
@@ -67,3 +67,7 @@ Appointment Form
 
 Appointment Edit & Delete
 !["Scheduler Buttons"](https://github.com/mzparulina/scheduler/blob/master/docs/appointment-buttons.png)
+
+##Deployment
+Netlify: [scheduler](https://github.com/mzparulina/scheduler-api)
+Railway: [scheduler-api repository](https://scheduler-api-production-d2f7.up.railway.app/)
