@@ -21,7 +21,6 @@ const ERROR_SAVE = 'ERROR_SAVE';
 const ERROR_DELETE = 'ERROR_DELETE';
 
 export default function Appointment(props) {
-  // import functions used to transition to different visual modes and set mode to SHOW or EMPTY depending on if interview is booked
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -32,13 +31,10 @@ export default function Appointment(props) {
       interviewer,
     };
     transition(SAVING);
-    // new interview object gets passed to bookInterview function
     props
       .bookInterview(props.id, interview)
-      // returns a promise which has a callback
       .then(() => transition(SHOW))
       .catch((error) => transition(ERROR_SAVE, true));
-    // console.log("bookInterview:", props.id, interview)
   }
 
   function remove(id) {
