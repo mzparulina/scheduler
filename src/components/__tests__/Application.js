@@ -41,7 +41,7 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     fireEvent.click(getByText(appointment, "Save"));
 
-    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+    expect(getByText(appointment, /saving appointment/i)).toBeInTheDocument();
 
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
     const day = getAllByTestId(container, "day").find(day =>
@@ -59,10 +59,10 @@ describe("Application", () => {
     );
 
     fireEvent.click(queryByAltText(appointment, "Delete"));
-    expect(getByText(appointment, "Are you sure you would like to delete?")).toBeInTheDocument();
+    expect(getByText(appointment, /are you sure you want to delete this appointment?/i)).toBeInTheDocument();
 
     fireEvent.click(queryByText(appointment, "Confirm"));
-    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
+    expect(getByText(appointment, /deleting appointment/i)).toBeInTheDocument();
 
     await waitForElement(() => getByAltText(appointment, "Add"));
     const day = getAllByTestId(container, "day").find(day =>
@@ -87,7 +87,7 @@ describe("Application", () => {
 
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     fireEvent.click(getByText(appointment, "Save"));
-    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+    expect(getByText(appointment, /saving appointment/i)).toBeInTheDocument();
 
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
     const day = getAllByTestId(container, "day").find(day =>
@@ -111,7 +111,7 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     fireEvent.click(getByText(appointment, "Save"));
 
-    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+    expect(getByText(appointment, /saving appointment/i)).toBeInTheDocument();
   
     await waitForElement(() => getByText(appointment, "Could not save appointment."));
     expect(getByText(appointment, "Could not save appointment.")).toBeInTheDocument();
@@ -126,14 +126,14 @@ describe("Application", () => {
     );
   
     fireEvent.click(queryByAltText(appointment, "Delete"));
-    expect(getByText(appointment, "Are you sure you would like to delete?")).toBeInTheDocument();
+    expect(getByText(appointment, /are you sure you want to delete this appointment?/i)).toBeInTheDocument();
 
     axios.delete.mockRejectedValueOnce();
 
     fireEvent.click(queryByText(appointment, "Confirm"));
-    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
+    expect(getByText(appointment, /deleting appointment/i)).toBeInTheDocument();
   
-    await waitForElement(() => getByText(appointment, "Could not cancel appointment."));
-    expect(getByText(appointment, "Could not cancel appointment.")).toBeInTheDocument();
+    await waitForElement(() => getByText(appointment, "Could not delete appointment."));
+    expect(getByText(appointment, "Could not delete appointment.")).toBeInTheDocument();
   });
 });
