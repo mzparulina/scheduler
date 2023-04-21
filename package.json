@@ -19,7 +19,8 @@
     "storybook": "start-storybook -p 9009 -s public --ci",
     "build-storybook": "build-storybook -s public",
     "coverage": "CI=true && react-scripts test --coverage --watchAll=false",
-    "cypress": "cypress open -P ."
+    "cypress": "cypress open -P .",
+    "production": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider  node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "browserslist": {
     "production": [
