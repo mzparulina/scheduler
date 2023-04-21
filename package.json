@@ -13,14 +13,13 @@
   "proxy": "http://localhost:8001",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public --ci",
     "build-storybook": "build-storybook -s public",
     "coverage": "CI=true && react-scripts test --coverage --watchAll=false",
-    "cypress": "cypress open -P .",
-    "production": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider  node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "cypress": "cypress open -P ."
   },
   "browserslist": {
     "production": [
