@@ -68,6 +68,6 @@ Appointment Form
 Appointment Edit & Delete
 !["Scheduler Buttons"](https://github.com/mzparulina/scheduler/blob/master/docs/appointment-buttons.png)
 
-##Deployment
-Netlify: [scheduler](https://github.com/mzparulina/scheduler-api)
-Railway: [scheduler-api repository](https://scheduler-api-production-d2f7.up.railway.app/)
+## Deployment
+- Netlify: [scheduler](https://6442e07e414d60178b5f725d--cool-cat-36be52.netlify.app/)
+- Railway: [scheduler-api repository](https://scheduler-api-production-d2f7.up.railway.app/)
